@@ -39,6 +39,7 @@ if __name__ == '__main__':
         for k,v in dataJson.items():
             print(k, v)
         
-        print("----------------")    
+        print("-------------------------")
+        print()    
     #save information in the appropriate csv file 
         # or create csv file and save information in the appropriate csv file
