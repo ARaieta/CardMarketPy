@@ -52,22 +52,23 @@ def transform_dict_value(card: dict):
 
 
 #To process the program launch the command as below
-
-#1 Digit link
-link = input("Digit Link: ")
-
-#2 Obtain data
-csanityze = extractor(link)
-
-#3 Sanityze and convert in a dictionary with valid model
-
-dataJson = transform_dict_value(csanityze)
-# 3.1 Print data and datetime
-#  3.1.1 Print data to track request datetime
-print(f"************{dtimestrformat()}************")
-for i in csanityze.keys():
-    print(i, " " , csanityze[i])
-print("************************")
-print()
-#4 get information and insert in a exisenst json file or in case a new json file
-
+#
+##1 Digit link
+#link = input("Digit Link: ")
+#
+##2 Obtain data
+#csanityze = extractor(link)
+#
+##3 Sanityze and convert in a dictionary with valid model
+#
+#dataJson = transform_dict_value(csanityze)
+## 3.1 Print data and datetime
+##  3.1.1 Print data to track request datetime
+#print(f"************{dtimestrformat()}************")
+#for i in csanityze.keys():
+#    print(i, " " , csanityze[i])
+#print("************************")
+#print()
+##4 get information and insert in a exisenst json file or in case a new json file
+#
+#
