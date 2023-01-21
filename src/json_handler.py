@@ -7,7 +7,7 @@ import os
 '''function to check if data folder exist
     else create it.
 '''
-def check_folder_data_exist():
+def folder_data_creation():
     path = "cardmarket_pokemon_data"
 
     isExist = os.path.exists(path)
@@ -18,18 +18,20 @@ def check_folder_data_exist():
         return False
     
 def check_if_file_exist(path,filename):
-    return os.path.exists(path.join(filename))
+    return os.path.exists(os.path.join(path,filename+".csv"))
     
-def create_csv(filename,data):
+    
+def create_csv_and_add_first_row(filename,data):
     dt = datetime.datetime.now()
     #Convert datetime in ISOFORMAT
     data['Date'] = dt.isoformat()
     
     #Create and write on file
-    with open(filename+'.csv','w',newline='') as f:
+    with open(os.path.join("cardmarket_pokemon_data",filename+'.csv'),'w',newline='') as f:
         writer = csv.DictWriter(f, fieldnames = data.keys())
         writer.writeheader()
         writer.writerow(data)
+    
         
 def add_row_to_csv(filename, data):
     dt = datetime.datetime.now()
@@ -37,12 +39,11 @@ def add_row_to_csv(filename, data):
     data['Date'] = dt.isoformat()
     
     #Append to EOF a new row with new data
-    with open(filename+'.csv','a') as f:
+    with open(os.path.join("cardmarket_pokemon_data",filename+'.csv'),'a') as f:
         dictwriter_object = csv.DictWriter(f, fieldnames=data.keys())
         dictwriter_object.writerow(data)
         f.close()
         
-
 def create_file_name(link):
     s = link.split("/")
     language = s[3]
@@ -59,5 +60,5 @@ print(s)
 #create_csv(s, d)
 
 #TEST ADD_ROW_TO_CSV
-d = {'Numero': '120', 'Stampata in': 'Tempesta Argentata', 'Specie': 'Jirachi', 'Articoli disponibili': 947, 'Da': 1.39, 'Tendenza di prezzo': 1.39, 'Prezzo medio 30 giorni': 1.32, 'Prezzo medio 7 giorni': 1.38, 'Prezzo medio 1 giorno': 1.63, 'link': 'https://www.cardmarket.com/it/Pokemon/Products/Singles/Silver-Tempest/Radiant-Jirachi-SIT120'}
-add_row_to_csv('IT_Silver-Tempest_Radiant-Jirachi-SIT120',d)
+#d = {'Numero': '120', 'Stampata in': 'Tempesta Argentata', 'Specie': 'Jirachi', 'Articoli disponibili': 947, 'Da': 1.39, 'Tendenza di prezzo': 1.39, 'Prezzo medio 30 giorni': 1.32, 'Prezzo medio 7 giorni': 1.38, 'Prezzo medio 1 giorno': 1.63, 'link': 'https://www.cardmarket.com/it/Pokemon/Products/Singles/Silver-Tempest/Radiant-Jirachi-SIT120'}
+#add_row_to_csv('IT_Silver-Tempest_Radiant-Jirachi-SIT120',d)
